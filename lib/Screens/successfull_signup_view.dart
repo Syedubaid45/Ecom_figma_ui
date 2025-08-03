@@ -1,8 +1,16 @@
+import 'package:figma_ecom_ui/Screens/Main_view.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_buttoms.dart';
 import 'package:flutter/material.dart';
 
 class SuccessfullSignupView extends StatelessWidget {
   const SuccessfullSignupView({super.key});
+
+  Shopping(context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => MainView()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +55,12 @@ class SuccessfullSignupView extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
                 SizedBox(height: 100),
-                customButton(onPressed: () {}, text: "Start Shopping"),
+                customButton(
+                  onPressed: () {
+                    Shopping(context);
+                  },
+                  text: "Start Shopping",
+                ),
               ],
             ),
           ),

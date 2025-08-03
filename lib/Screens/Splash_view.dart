@@ -1,8 +1,24 @@
+import 'package:figma_ecom_ui/Screens/Login_view.dart';
+import 'package:figma_ecom_ui/Screens/SignUp_view.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_buttoms.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
+
+  login(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginView()),
+    );
+  }
+
+  Signup(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignupView()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +54,18 @@ class SplashView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 customButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    login(context);
+                  },
                   text: "Log In",
                   color: Colors.white,
                   textColor: Colors.black,
                 ),
                 SizedBox(height: 20),
                 customButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Signup(context);
+                  },
                   text: "Sign Up",
                   borderColor: Colors.white,
                   textColor: Colors.white,

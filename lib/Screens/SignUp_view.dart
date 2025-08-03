@@ -1,3 +1,5 @@
+import 'package:figma_ecom_ui/Screens/Main_view.dart';
+import 'package:figma_ecom_ui/Screens/successfull_signup_view.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_buttoms.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_textFormField.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,13 @@ class SignupView extends StatefulWidget {
 
 class _SignupViewState extends State<SignupView> {
   bool _agreeToTerms = false;
+
+  signup(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SuccessfullSignupView()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +109,9 @@ class _SignupViewState extends State<SignupView> {
 
                 const SizedBox(height: 20),
                 customButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    signup(context);
+                  },
                   text: "Sign Up",
                   color: Colors.black,
                   textColor: Colors.white,

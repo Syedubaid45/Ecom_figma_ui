@@ -12,9 +12,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   final List<_NavItem> _navItems = const [
     _NavItem(icon: Icons.home, label: "Home"),
-    _NavItem(icon: Icons.shopping_cart_outlined, label: "Cart"),
-    _NavItem(icon: Icons.favorite_border, label: "Wishlist"),
-    _NavItem(icon: Icons.person_outline, label: "Profile"),
+    _NavItem(icon: Icons.shopping_cart, label: "Cart"),
+    _NavItem(icon: Icons.notifications, label: "Notifications"),
+    _NavItem(icon: Icons.person, label: "Profile"),
   ];
 
   @override

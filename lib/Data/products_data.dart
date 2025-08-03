@@ -10,7 +10,7 @@ List<Map<String, dynamic>> products = [
     "selectedSize": 41,
     "colors": [0xFF000000, 0xFF1D1E33, 0xFF3B82F6], // hex color values
     "selectedColor": 0xFF1D1E33,
-    "image": "assets/images/shoe1.png",
+    "image": "assets/images/icon1.webp",
   },
   {
     "name": "Nike Air Max",
@@ -23,7 +23,7 @@ List<Map<String, dynamic>> products = [
     "selectedSize": 42,
     "colors": [0xFF000000, 0xFFFFFFFF, 0xFF4A90E2],
     "selectedColor": 0xFF4A90E2,
-    "image": "assets/images/shoe2.png",
+    "image": "assets/images/icon1.webp",
   },
   {
     "name": "Adidas Ultraboost",
@@ -36,7 +36,7 @@ List<Map<String, dynamic>> products = [
     "selectedSize": 41,
     "colors": [0xFF111111, 0xFF888888],
     "selectedColor": 0xFF111111,
-    "image": "assets/images/shoe3.png",
+    "image": "assets/images/icon1.webp",
   },
   {
     "name": "Puma RS-X",
@@ -49,7 +49,7 @@ List<Map<String, dynamic>> products = [
     "selectedSize": 39,
     "colors": [0xFFE91E63, 0xFF000000],
     "selectedColor": 0xFFE91E63,
-    "image": "assets/images/shoe4.png",
+    "image": "assets/images/icon1.webp",
   },
   {
     "name": "New Balance 574",
@@ -62,7 +62,7 @@ List<Map<String, dynamic>> products = [
     "selectedSize": 41,
     "colors": [0xFF607D8B, 0xFF9E9E9E],
     "selectedColor": 0xFF607D8B,
-    "image": "assets/images/shoe5.png",
+    "image": "assets/images/icon1.webp",
   },
   {
     "name": "Reebok Nano X",
@@ -75,6 +75,6 @@ List<Map<String, dynamic>> products = [
     "selectedSize": 42,
     "colors": [0xFF00BCD4, 0xFF009688],
     "selectedColor": 0xFF00BCD4,
-    "image": "assets/images/shoe6.png",
+    "image": "assets/images/icon1.webp",
   },
 ];

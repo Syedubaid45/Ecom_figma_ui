@@ -1,6 +1,5 @@
 import 'package:figma_ecom_ui/Screens/Home_view.dart';
-import 'package:figma_ecom_ui/Screens/SignUp_view.dart';
-import 'package:figma_ecom_ui/Screens/successfull_signup_view.dart';
+import 'package:figma_ecom_ui/Screens/Splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Figma E-Commerce UI',
-      home: HomeView(),
+      home: SplashView(),
     );
   }
 }
