@@ -1,4 +1,4 @@
-import 'package:figma_ecom_ui/Screens/Main_view.dart';
+import 'package:figma_ecom_ui/Screens/Home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_buttoms.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_textFormField.dart';
@@ -9,7 +9,7 @@ class LoginView extends StatelessWidget {
   login(context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => MainView()),
+      MaterialPageRoute(builder: (context) => HomeView()),
     );
   }
 
