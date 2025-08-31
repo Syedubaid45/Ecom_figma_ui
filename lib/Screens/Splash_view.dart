@@ -37,11 +37,11 @@ class SplashView extends StatelessWidget {
           Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.black.withOpacity(0.8),
+            color: Colors.black.withOpacity(0.90),
           ),
           Center(
             child: Image.asset(
-              "assets/images/logow.png",
+              "assets/images/2log.png",
               width: MediaQuery.of(context).size.width * 0.4,
               height: MediaQuery.of(context).size.height * 0.4,
               fit: BoxFit.contain,

@@ -1,16 +1,79 @@
 import 'package:figma_ecom_ui/Screens/Home_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_buttoms.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_textFormField.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class LoginView extends StatefulWidget {
+  LoginView({super.key});
 
-  login(context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => HomeView()),
-    );
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+
+  bool _isLoading = false;
+
+  Future<void> login(BuildContext context) async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter email and password.')),
+      );
+      return;
+    }
+
+    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a valid email address.')),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeView()),
+      );
+    } on FirebaseAuthException catch (e) {
+      String message;
+      if (e.code == 'user-not-found') {
+        message = 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        message = 'Wrong password provided.';
+      } else if (e.code == 'invalid-email') {
+        message = 'The email address is invalid.';
+      } else if (e.code == 'user-disabled') {
+        message = 'This account has been disabled.';
+      } else {
+        message = 'Unexpected error: ${e.message}';
+      }
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Something went wrong. Please try again.'),
+        ),
+      );
+    } finally {
+      setState(() => _isLoading = false);
+    }
   }
 
   @override
@@ -30,7 +93,7 @@ class LoginView extends StatelessWidget {
               children: [
                 Center(
                   child: Image.asset(
-                    "assets/images/logob.png",
+                    "assets/images/1log.png",
                     width: MediaQuery.of(context).size.width * 0.4,
                     height: MediaQuery.of(context).size.height * 0.25,
                     fit: BoxFit.contain,
@@ -51,11 +114,13 @@ class LoginView extends StatelessWidget {
 
                 const SizedBox(height: 40),
                 CustomTextField(
+                  controller: emailController,
                   label: "Email",
                   hintText: "Enter your email",
                   suffixIcon: Icons.email,
                 ),
                 CustomTextField(
+                  controller: passwordController,
                   label: "Password",
                   hintText: "Enter your password",
                   obscureText: true,

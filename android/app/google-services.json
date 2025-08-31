@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "160845601284",
+    "project_id": "borcelle-shoes-store",
+    "storage_bucket": "borcelle-shoes-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160845601284:android:2935024f71d673aff5b351",
+        "android_client_info": {
+          "package_name": "com.example.figma_ecom_ui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbWcTu52ADo9htuG1NqfmYAyELzFlpxFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

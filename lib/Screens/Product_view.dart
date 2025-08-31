@@ -1,9 +1,14 @@
+import 'package:figma_ecom_ui/Data/Cart_items.dart';
+import 'package:figma_ecom_ui/Data/products_data.dart';
+import 'package:figma_ecom_ui/Screens/Cart_view.dart';
 import 'package:figma_ecom_ui/Widgets/Color_selector.dart';
 import 'package:figma_ecom_ui/Widgets/Custom_buttoms.dart';
 import 'package:figma_ecom_ui/Widgets/Product_image_section.dart';
 import 'package:figma_ecom_ui/Widgets/Product_title_and_rating.dart';
 import 'package:figma_ecom_ui/Widgets/Size_selector.dart';
 import 'package:flutter/material.dart';
+import '../Data/products_data.dart';
+import 'package:figma_ecom_ui/Data/Cart_items.dart';
 
 class ProductView extends StatefulWidget {
   ProductView({super.key, required this.product});
@@ -16,6 +21,18 @@ class ProductView extends StatefulWidget {
 class _ProductViewState extends State<ProductView> {
   late double selectedSize;
   late int selectedColor;
+
+  addToCart() {
+    cartItems.add({
+      "name": widget.product["name"],
+      "description": widget.product["description"],
+      "price": widget.product["price"],
+      "quantity": 1,
+      "selectedSize": selectedSize,
+      "selectedColor": selectedColor,
+      "image": widget.product["image"],
+    });
+  }
 
   @override
   void initState() {
@@ -33,7 +50,7 @@ class _ProductViewState extends State<ProductView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ProductImageSection(),
+            ProductImageSection(products.indexOf(widget.product), context),
             ProductTitleAndRating(
               title: widget.product['name'],
               rating: widget.product['rating'],
@@ -46,7 +63,6 @@ class _ProductViewState extends State<ProductView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Size Section
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -139,7 +155,15 @@ class _ProductViewState extends State<ProductView> {
               width: 160,
 
               child: customButton(
-                onPressed: () {},
+                onPressed: () {
+                  addToCart();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('${widget.product["name"]} added to cart'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                },
                 text: "Add to cart",
                 filled: true,
               ),

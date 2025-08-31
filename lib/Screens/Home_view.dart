@@ -21,12 +21,20 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
-  final List<Widget> _pages = const [
-    MainView(),
-    CartView(),
-    NotificationView(),
-    ProfileView(),
-  ];
+  Widget _getPage(int index) {
+    switch (index) {
+      case 0:
+        return const MainView();
+      case 1:
+        return CartView();
+      case 2:
+        return const NotificationView();
+      case 3:
+        return const ProfileScreen();
+      default:
+        return const MainView();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +45,9 @@ class _HomeViewState extends State<HomeView> {
           onTap: _onNavTapped,
         ),
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: Drawer(
-            backgroundColor: Colors.white,
-            child: Icon(Icons.menu, color: Colors.black),
-          ),
-          actions: [IconButton(icon: Icon(Icons.search), onPressed: () {})],
-        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: IndexedStack(index: _selectedIndex, children: _pages),
+          child: _getPage(_selectedIndex),
         ),
       ),
     );
